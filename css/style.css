@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+/* Reset some default browser styles */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: white;
+  background-color: black;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* header */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background: #000612;
+  color: white;
+  padding: 0 20px;
+}
+
+header img {
+  width: 10%;
+  height: auto;
+  margin-right: 2%;
+}
+
+header h1 {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+}
+
+.icon-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header nav {
+  font-family: "Orbitron", sans-serif;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: white;
+  padding: 6px 10px 0 14px;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+header nav a:hover {
+  transform: scale(1.2);
+}
+
+header nav a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+  border-radius: 6px;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+header nav a:hover::after {
+  opacity: 1;
+}
+
+/* main */
+main {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.paragraph-container {
+  width: 100%;
+}
+
+.paragraph-container p {
+  position: absolute;
+  font-family: "Orbitron", sans-serif;
+  text-align: justify;
+  font-size: 20px;
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    #fe034400 0%,
+    #fe0344 25%,
+    #fe0344 75%,
+    #fe034400 100%
+  );
+  padding: 30px 20% 30px 20%;
+  top: 16%;
+  z-index: 1;
+}
+
+.paragraph-container div {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.paragraph-container button {
+  font-size: 1.8vw;
+}
+.customize-car-button {
+  font-family: "Orbitron", sans-serif;
+  position: absolute;
+  width: 14%;
+  height: 10%;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.customize-car-button::before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 2px solid white;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.customize-car-button:hover::before {
+  width: 120%;
+  height: 120%;
+  opacity: 1;
+}
+
+.customize-car-button:hover {
+  background-color: #fe0344;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#background-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
+
+.image-container {
+  margin: -20px;
+  padding: 0;
+}
+
+.about-us-container {
+  width: 100%;
+  padding: 6% 0;
+  color: white;
+  background: #fe0344;
+}
+
+.about-us-container h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 24px;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.about-us-container p {
+  font-family: "Orbitron", sans-serif;
+  font-size: 20px;
+  text-align: justify;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.customize-car-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+#car-image {
+  display: none;
+  visibility: hidden;
+  width: 60%;
+  height: auto;
+}
+
+.customize-car-form-container {
+  font-family: "Orbitron", sans-serif;
+  width: 40%;
+  padding: 30px 40px;
+  color: white;
+  background: black;
+}
+
+.customize-car-form-container h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto 20px auto;
+}
+
+#customize-car-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#customize-car-form label {
+  font-size: 20px;
+}
+
+#customize-car-form select {
+  padding: 10px;
+  margin: 0 0 15px 0;
+  font-size: 18px;
+}
+
+#customize-car-form button {
+  padding: 10px;
+  font-size: 20px;
+  background-color: #fe0344;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1285px) {
+  header {
+    padding-bottom: 1%;
+  }
+
+  .paragraph-container button {
+    font-size: 3vw;
+  }
+
+  .customize-car-button {
+    width: 24%;
+    height: 14%;
+    top: 80%;
+  }
+
+  #background-img {
+    object-fit: cover;
+    width: auto;
+    height: 100%;
+    margin-left: -60%;
+  }
+
+  .customize-car-container {
+    flex-direction: column-reverse;
+  }
+
+  .customize-car-form-container {
+    width: 90%;
+    margin: 0 5%;
+    padding: 30px 0;
+  }
+
+  #car-image {
+    width: 100%;
+  }
+}
