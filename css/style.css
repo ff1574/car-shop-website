@@ -269,9 +269,46 @@ main {
   cursor: pointer;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  padding: 6px 10px 0 14px;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+footer a:hover {
+  transform: scale(1.2);
+}
+
+footer a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+  border-radius: 6px;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  transition: border 0.3s ease-in-out;
+}
+
+footer a:hover::after {
+  border: 2px solid #fe0344;
+}
+
 @media screen and (max-width: 1285px) {
-  header {
-    padding-bottom: 1%;
+  header a {
+    margin: 6% 0;
   }
 
   .paragraph-container button {
@@ -303,5 +340,26 @@ main {
 
   #car-image {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .paragraph-container p {
+    top: 30%;
+  }
+
+  .paragraph-container button {
+    font-size: 5vw;
+  }
+
+  .customize-car-button {
+    width: 40%;
+    height: 10%;
+    top: 150%;
+  }
+
+  .about-us-container p {
+    width: 90%;
+    font-size: 16px;
   }
 }
