@@ -24,28 +24,45 @@
 #order-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   margin: 0 auto;
   font-size: 18px;
 }
 
 #order-form label {
-  margin: 25px 0 10px 0;
+  width: 95%;
+  margin: 25px auto 10px auto;
 }
 
 #order-form input {
-  width: 90%;
+  width: 95%;
   height: 25px;
+  margin: 0 auto;
 }
 
 #order-form button {
-    width: 60%;
-    margin: 40px 0 10px 0;
-    padding: 10px;
-    font-size: 20px;
-    background-color: #fe0344;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+  width: 60%;
+  margin: 40px auto 10px auto;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #fe0344;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#order-form button:hover {
+  background-color: #4caf50;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.terms-conditions-checkbox-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+}
