@@ -59,9 +59,16 @@ document.getElementById("rims").addEventListener("change", function () {
 });
 
 // Whenever the submit button is clicked, check if the form is complete, if not throw an alert
-document.getElementById("submit-button").addEventListener("click", function () {
+document.getElementById("submit-button").addEventListener("click", function (event) {
+
+  event.preventDefault(); // Prevent the form from submitting normally
+  
   if (!checkFormCompletion()) {
     alert("Please complete the form before submitting!");
+  } 
+  else {
+    // If the form is valid, redirect to the personal information page
+    window.location.href = "order-form.html";
   }
 });
 
