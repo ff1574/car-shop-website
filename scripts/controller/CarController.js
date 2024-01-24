@@ -59,6 +59,7 @@ class CarController {
     switch (input.id) {
       case "car-model":
         this.model.model = input.value;
+        this.handleCarModelChange();
         break;
       case "color":
         this.model.color = input.value;
@@ -67,10 +68,46 @@ class CarController {
         this.model.rims = input.value;
         break;
     }
+
     if (this.view.checkFormCompletion(this.model)) {
       this.view.renderCar(this.model.model, this.model.color, this.model.rims);
     }
   };
+
+  handleCarModelChange() {
+    let colorSelect = document.getElementById("color");
+    let rimsSelect = document.getElementById("rims");
+
+    // Clear existing options
+    colorSelect.innerHTML = "";
+    rimsSelect.innerHTML = "";
+
+    // Clear previously selected values
+    this.model.color = "";
+    this.model.rims = "";
+
+    if (this.model.model === "model3") {
+      colorSelect.innerHTML +=
+        '<option value="">Select a color</option><option value="silver">Glacier Silver</option><option value="blue">Mediterranean Blue</option>';
+      rimsSelect.innerHTML +=
+        '<option value="">Select a rim</option><option value="silver">(Silver) Mercury Mist</option><option value="black">(Black) Obsidian Onyx</option>';
+    } else if (this.model.model === "model8") {
+      colorSelect.innerHTML +=
+        '<option value="">Select a color</option><option value="blue">Imperial Blue</option><option value="green">British Racing Green</option>';
+      rimsSelect.innerHTML +=
+        '<option value="">Select a rim</option><option value="silver1">(Silver) Silver Serenity</option><option value="silver2">(Silver) Arctic Alloy</option>';
+    }
+
+    // Select the first option by default
+    colorSelect.selectedIndex = 1;
+    rimsSelect.selectedIndex = 1;
+
+    // Update the model with the selected values
+    this.model.color = colorSelect.value;
+    this.model.rims = rimsSelect.value;
+
+    this.view.checkFormCompletion(this.model);
+  }
 
   /**
    * Handles "submit" events fired by the form.
