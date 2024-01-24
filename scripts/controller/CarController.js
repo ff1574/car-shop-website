@@ -1,27 +1,13 @@
 /**
- * Class that represents the application controller. The controller is responsible
- * for accessing data from the model and displaying it on the view. The controller
- * is used to intermediate between the view and the model. It monitors user interactions
- * with the view and communicates any changes to the model. On the other hand,
- * changes (if any) to the model are observed by the controller and subsequently
- * reflected in the view.
- *
- * The controller contains the code that handles different types of events. The
- * controller's methods are event handlers.
- *
- * BEWARE of the 'this' keyword. The 'this' keyword behaves a little differently
- * in JavaScript compared to other languages. In most cases, the value of 'this'
- * is determined by how a function is called (runtime binding). Inside a handler,
- * 'this' points to the UI element that triggered the event. Inside an arrow
- * function, 'this' points to the object that owns/defines the arrow function.
- * Here, that's the CarController object.
+ * Class that represents the car controller. The controller acts as a mediator between the model and the view.
+ * It listens to events triggered by the UI, updates the model and instructs the view to update.
  */
 class CarController {
   /**
    * Creates an object representing the car controller.
    *
-   * @param {type} model - The model the controller interacts with.
-   * @param {type} view - The view the controller interacts with.
+   * @param {CarModel} model - The model the controller interacts with.
+   * @param {CarView} view - The view the controller interacts with.
    * @returns {CarController} The object representing the car controller.
    */
   constructor(model, view) {
@@ -74,6 +60,11 @@ class CarController {
     }
   };
 
+  /**
+   * Handles the change of the car model.
+   * This function clears the existing options in the color and rims select elements,
+   * adds new options based on the selected car model, and selects the first option by default.
+   */
   handleCarModelChange() {
     let colorSelect = document.getElementById("color");
     let rimsSelect = document.getElementById("rims");

@@ -7,7 +7,7 @@
  */
 class CarModel {
   /**
-   * Represents the type of the car.
+   * Represents the model of the car.
    * @type String
    */
   #model = "undefined";
