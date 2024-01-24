@@ -1,0 +1,68 @@
+.order-form-container {
+  font-family: "Orbitron", sans-serif;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  padding: 0 20px 20px 20px;
+  margin: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.order-form-container h2 {
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+  margin: 20px auto;
+}
+
+#order-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+#order-form label {
+  width: 95%;
+  margin: 25px auto 10px auto;
+}
+
+#order-form input {
+  width: 95%;
+  height: 25px;
+  margin: 0 auto;
+}
+
+#order-form button {
+  width: 60%;
+  margin: 40px auto 10px auto;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #fe0344;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#order-form button:hover {
+  background-color: #4caf50;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.terms-conditions-checkbox-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 95%;
+  margin: 0 auto;
+}
