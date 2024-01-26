@@ -5,7 +5,7 @@
  * model does not talk directly to a view, instead is made available to a controller
  * which accesses it when needed.
  */
-class CarModel {
+export class CarModel {
   /**
    * Represents the model of the car.
    * @type String

@@ -7,7 +7,7 @@
  * The view holds references to all UI elements with which the user interacts with
  * AND for which the event-handling mechanism needs to be implemented.
  */
-class CarView {
+export class CarView {
   constructor() {
     this.modelInput = document.querySelector("#car-model");
     this.colorInput = document.querySelector("#color");

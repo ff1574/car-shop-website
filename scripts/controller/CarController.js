@@ -2,7 +2,7 @@
  * Class that represents the car controller. The controller acts as a mediator between the model and the view.
  * It listens to events triggered by the UI, updates the model and instructs the view to update.
  */
-class CarController {
+export class CarController {
   /**
    * Creates an object representing the car controller.
    *
