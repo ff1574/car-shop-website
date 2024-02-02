@@ -1,3 +1,4 @@
+import { carData } from "../store/selectData.js";
 /**
  * Represents the application model. The model contains the data, the information
  * regarding the car such as: type and color. The model can obtain data either
@@ -6,72 +7,84 @@
  * which accesses it when needed.
  */
 export class CarModel {
-  /**
-   * Represents the model of the car.
-   * @type String
-   */
-  #model = "undefined";
+    static store = carData;
+    /**
+     * Represents the model of the car.
+     * @type String
+     */
+    #model = "undefined";
 
-  /**
-   * Represents the color of the car.
-   * @type String
-   */
-  #color = "undefined";
+    /**
+     * Represents the color of the car.
+     * @type String
+     */
+    #color = "undefined";
 
-  /**
-   * Represents the rims of the car.
-   * @type String
-   */
-  #rims = "undefined";
+    /**
+     * Represents the rims of the car.
+     * @type String
+     */
+    #rims = "undefined";
 
-  /**
-   * Sets the model of this CarModel object.
-   * @param {String} model - the model of the car
-   */
-  set model(model) {
-    if (model === "") this.#model = "undefined";
-    else this.#model = model;
-  }
+    /**
+     * Sets the model of this CarModel object.
+     * @param {String} model - the model of the car
+     */
+    set model(model) {
+        if (model === "") this.#model = "undefined";
+        else this.#model = model;
+    }
 
-  /**
-   * Sets the color of this CarModel object.
-   * @param {String} color - the color of the car
-   */
-  set color(color) {
-    if (color === "") this.#color = "undefined";
-    else this.#color = color;
-  }
+    /**
+     * Sets the color of this CarModel object.
+     * @param {String} color - the color of the car
+     */
+    set color(color) {
+        if (color === "") this.#color = "undefined";
+        else this.#color = color;
+    }
 
-  /**
-   * Sets the rims of this CarModel object.
-   * @param {String} rims - the rims of the car
-   */
-  set rims(rims) {
-    if (rims === "") this.#rims = "undefined";
-    else this.#rims = rims;
-  }
+    /**
+     * Sets the rims of this CarModel object.
+     * @param {String} rims - the rims of the car
+     */
+    set rims(rims) {
+        if (rims === "") this.#rims = "undefined";
+        else this.#rims = rims;
+    }
 
-  /**
-   * Returns the model of the car represented by this object.
-   * @returns {String} the model of the car represented by this object
-   */
-  get model() {
-    return this.#model;
-  }
+    /**
+     * Returns the model of the car represented by this object.
+     * @returns {String} the model of the car represented by this object
+     */
+    get model() {
+        return this.#model;
+    }
 
-  /**
-   * Returns the color of the car represented by this object.
-   * @returns {String} the color of the car represented by this object
-   */
-  get color() {
-    return this.#color;
-  }
+    /**
+     * Returns the color of the car represented by this object.
+     * @returns {String} the color of the car represented by this object
+     */
+    get color() {
+        return this.#color;
+    }
 
-  /**
-   * Returns the rims of the car represented by this object.
-   * @returns {String} the rims of the car represented by this object
-   */
-  get rims() {
-    return this.#rims;
-  }
+    /**
+     * Returns the rims of the car represented by this object.
+     * @returns {String} the rims of the car represented by this object
+     */
+    get rims() {
+        return this.#rims;
+    }
+
+    /**
+     * Returns an array of this object's properties names.
+     * The returned array is used by View to dynamically render the selects.
+     * For each Model property, a select is being rendered in View.
+     *
+     * @returns {Array} array of property names (strings)
+     */
+    getProperties() {
+        return carData;
+    }
 }
