@@ -78,29 +78,10 @@
       </div>
       <div class="customize-car-container">
         <div class="customize-car-form-container" id="shop">
-          <h2>Buy your own custom car!</h2>
           <form id="customize-car-form" novalidate>
-            <label for="car-model">Car Model:</label>
-            <select id="car-model">
-              <option value="">Select a model</option>
-              <option value="model3">BMW 3-Series</option>
-              <option value="model8">BMW 8-Series</option>
-            </select>
-
-            <label for="color">Color:</label>
-            <select id="color">
-              <option value="">Please select model first</option>
-              <option value="blue">Color 1</option>
-              <option value="silver">Color 2</option>
-            </select>
-
-            <label for="rims">Rims:</label>
-            <select id="rims">
-              <option value="">Please select model first</option>
-              <option value="silver">Rim 1</option>
-              <option value="black">Rim 2</option>
-            </select>
-
+            <div id="div-selects">
+              <h2>Buy your own custom car!</h2>
+            </div>
             <button type="submit" id="submit-button" disabled>Submit</button>
           </form>
         </div>
@@ -112,4 +93,5 @@
       <p>&copy; 2024 Cruise Customs. All rights reserved.</p>
     </footer>
     <script type="module" src="scripts/app.js"></script>
+  </body>
 </html>

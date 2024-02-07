@@ -9,81 +9,73 @@
  */
 export class CarView {
   constructor() {
-    this.modelInput = document.querySelector("#car-model");
-    this.colorInput = document.querySelector("#color");
-    this.rimsInput = document.querySelector("#rims");
     this.carForm = document.querySelector("#customize-car-form");
-    this.carImage = document.querySelector("#car-image");
-    this.submitButton = document.querySelector("#submit-button");
+    this.selectsDiv = document.querySelector("#div-selects");
+    this.selects = null;
+    this.carImg = document.querySelector("#car-image");
   }
 
   /**
-   * Enables or disables the submit button depending on the input values.
-   * If all input is values are as expected, the button will be enabled.
-   */
-  checkFormCompletion(model) {
-    // If all fields have been selected, return true. Otherwise, return false.
-    if (
-      model.model !== "undefined" &&
-      model.color !== "undefined" &&
-      model.rims !== "undefined"
-    ) {
-      this.submitButton.disabled = false;
-      return true;
-    }
-    this.submitButton.disabled = true;
-    return false;
-  }
-
-  /**
-   * Renders the image based on the model data.
+   * Renders HTML select elements. The options are not loaded in the process,
+   * meaning that there are no Option elements as part of the select element.
    *
-   * @param {String} model - The model of the car image.
-   * @param {String} color - The color of the car image.
-   * @param {String} rims - The rims of the car image.
+   * @param {Array} selectIDs - array of strings (select ids)
+   */
+  renderSelects(selectIDs) {
+    selectIDs.forEach((name) => {
+      let select = document.createElement("select");
+      select.setAttribute("id", name);
+      select.options.add(new Option(` -- Select ${name} -- `, "undefined"));
+      this.selectsDiv.appendChild(select);
+    });
+
+    this.selects = this.selectsDiv.querySelectorAll("select");
+  }
+
+  /**
+   * Resets all next selects, selects that are siblings to the one defined by
+   * this method parameter.
+   *
+   * @param {type} selectID - the ID of the select which next siblings are going to be reset
+   */
+  resetNextSiblings(selectID) {
+    let select = this.selectsDiv.querySelector(`#${selectID}`);
+    let nextSelect = select.nextElementSibling;
+    while (nextSelect) {
+      nextSelect.length = 1;
+      nextSelect = nextSelect.nextElementSibling;
+    }
+  }
+
+  /**
+   * Adds options to a select.
+   *
+   * @param {String} selectID
+   * @param {Array} options - array of strings (option names)
+   */
+  addOptions(selectID, options) {
+    let select = this.selectsDiv.querySelector(`#${selectID}`);
+    select.length = 1;
+    options.forEach((option) => {
+      select.options.add(new Option(option, option));
+    });
+  }
+
+  /**
+   * Renders the image based on the current selects' values.
+   *
    * @returns {undefined}
    */
-  renderCar(model, color, rims) {
-    // Get the car image element
-    const carImage = document.getElementById("car-image");
+  renderCar() {
+    let imgSrc = "../assets/";
 
-    // Log the values of model, color, rims, and carImage.src
-    // console.log("model:", model);
-    // console.log("color:", color);
-    // console.log("rims:", rims);
+    this.selects.forEach((select) => {
+      imgSrc += `${select.value}-`;
+    });
+    imgSrc = imgSrc.slice(0, -1) + ".png"; //remove the last character '-'.
 
-    // Check if any of the variables are undefined or null
-    if (
-      model === undefined ||
-      model === null ||
-      color === undefined ||
-      color === null ||
-      rims === undefined ||
-      rims === null
-    ) {
-      // If any are, set the styles to hidden and none
-      carImage.style.display = "none";
-      carImage.style.visibility = "hidden";
-    } else {
-      // If all have valid values, update the source of the car image
-      carImage.src = `assets/${model}-${color}-${rims}.png`;
-
-      // Log the new source of the car image
-      //   console.log("carImage.src:", carImage.src);
-
-      // Change the styles to block and visible
-      carImage.style.display = "block";
-      carImage.style.visibility = "visible";
-    }
-  }
-
-  /**
-   * Resets the input values and the submit button.
-   */
-  reset() {
-    this.modelInput.value = "";
-    this.colorInput.value = "";
-    this.rimsInput.value = "";
-    this.submitButton.disabled = true;
+    this.carImg.src = imgSrc;
+    this.carImg.style.display = "block";
+    this.carImg.style.visibility = "visible";
   }
 }

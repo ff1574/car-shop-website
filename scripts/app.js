@@ -7,10 +7,10 @@
  * The controller monitors user interaction with the view and communicates
  * any changes to the model.
  */
-import { CarModel } from "./model/CarModel.js";
 import { CarView } from "./view/CarView.js";
+import { CarModel } from "./model/CarModel.js";
 import { CarController } from "./controller/CarController.js";
 
-const carModel = new CarModel();
-const carView = new CarView();
-const carController = new CarController(carModel, carView);
+document.addEventListener("DOMContentLoaded", function () {
+  const app = new CarController(new CarModel(), new CarView());
+});
