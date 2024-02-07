@@ -29,10 +29,10 @@ export class CarController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
-    this.proceedToOrderButton = document.getElementById("submit-button");
+    this.submitButton = document.getElementById("submit-button");
 
     // Add a click event handler to the "Proceed to Order" button
-    this.proceedToOrderButton.addEventListener(
+    this.submitButton.addEventListener(
       "click",
       this.handleProceedToOrder
     );
@@ -75,11 +75,11 @@ export class CarController {
       (select) => select.selectedIndex > 0
     );
     if (allSelectsChosen) {
-      this.proceedToOrderButton.style.display = "block";
-      this.proceedToOrderButton.removeAttribute("disabled");
+      this.submitButton.style.display = "block";
+      this.submitButton.removeAttribute("disabled");
     } else {
-      this.proceedToOrderButton.style.display = "none";
-      this.proceedToOrderButton.setAttribute("disabled", "true");
+      this.submitButton.style.display = "none";
+      this.submitButton.setAttribute("disabled", "true");
     }
     //2. UPDATE VIEW (selectsDiv + animalDiv -------------------------------
 
