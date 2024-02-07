@@ -51,6 +51,10 @@ export class CarController {
 
     // 4. register form submit handler
     this.view.carForm.addEventListener("submit", this.handleSubmit.bind(this));
+    
+    // 5. disable the submit button
+    this.submitButton.style.display = "none";
+    this.submitButton.setAttribute("disabled", "true");
   }
 
   /**
@@ -101,7 +105,8 @@ export class CarController {
    */
   handleSubmit = (event) => {
     event.preventDefault(); // This line prevents the default form submission behavior
-    window.location.href = "order.html"; // Redirect or handle the form data as needed
+    this.model.persist();
     console.log("Form submitted");
+    // window.location.href = "../../order-form.html"; // Redirect or handle the form data as needed
   };
 }
