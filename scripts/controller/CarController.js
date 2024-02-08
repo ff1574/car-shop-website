@@ -107,6 +107,6 @@ export class CarController {
     event.preventDefault(); // This line prevents the default form submission behavior
     this.model.persist();
     console.log("Form submitted");
-    // window.location.href = "../../order-form.html"; // Redirect or handle the form data as needed
+    window.location.href = "../../order-form.html"; // Redirect or handle the form data as needed
   };
 }
