@@ -59,7 +59,7 @@ export class FormController {
     });
 
     if (!allFilled) {
-      alert("Please fill in all the fields");
+      console.log("Please fill in all the fields");
     }
 
     return allFilled;
@@ -68,7 +68,7 @@ export class FormController {
   validateTermsAndConditions = () => {
     const termsCheckbox = document.querySelector("#terms");
     if (!termsCheckbox.checked) {
-      alert("Please accept the terms and conditions.");
+      console.log("Please accept the terms and conditions.");
       return false;
     } else
     return true;

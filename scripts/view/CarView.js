@@ -67,7 +67,7 @@ export class CarView {
    * @returns {undefined}
    */
   renderCar() {
-    let imgSrc = "../assets/";
+    let imgSrc = "assets/";
 
     this.selects.forEach((select) => {
       imgSrc += `${select.value}-`;
