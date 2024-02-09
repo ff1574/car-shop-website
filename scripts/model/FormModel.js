@@ -39,6 +39,10 @@ export class FormModel {
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON}
      */
     persist() {
-        localStorage.setItem("car", JSON.stringify(this));
+        let data = {
+            car: this.car,
+            personalInformation: this.personalInformation
+        };
+        document.cookie = `form=${encodeURIComponent(JSON.stringify(data))}; path=/`;
     }
 }

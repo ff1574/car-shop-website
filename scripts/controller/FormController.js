@@ -6,60 +6,71 @@
  * More at {@link https://developer.mozilla.org/en-US/docs/Web/API/FormData FormData}.
  */
 export class FormController {
-    constructor(model, view) {
-        this.model = model;
-        this.view = view;
-        this.view.createInputs(this.model.getInputData());
+  constructor(model, view) {
+    this.model = model;
+    this.view = view;
+    this.view.createInputs(this.model.getInputData());
 
-        // register one event handler for all input 'change' events
-        this.view.inputs.forEach((input) => {
-            input.addEventListener("change", this.handleInputChange);
-        });
+    // register one event handler for all input 'change' events
+    this.view.inputs.forEach((input) => {
+      input.addEventListener("change", this.handleInputChange);
+    });
 
-        // register form submit handler
-        this.view.form.addEventListener("submit", this.handleFormSubmit);
+    // register form submit handler
+    this.view.form.addEventListener("submit", this.handleFormSubmit);
+  }
+
+  handleInputChange = (event) => {
+    //update model
+    let input = event.target;
+    this.model[input.name] = input.value;
+  };
+
+  handleFormSubmit = (event) => {
+    //prevent the default action of a form (prevent submitting it)
+    event.preventDefault();
+
+    if (!this.validateInputs() || !this.validateTermsAndConditions()) {
+      return;
     }
 
-    handleInputChange = (event) => {
-        //update model
-        let input = event.target;
-        this.model[input.name] = input.value;
-    };
+    let formData = new FormData(this.view.form);
+    let formDataObj = {};
+    for (let entry of formData) {
+      formDataObj[entry[0]] = entry[1];
+    }
 
-    handleFormSubmit = (event) => {
-        //prevent the default action of a form (prevent submitting it)
-        event.preventDefault();
+    localStorage.setItem("personal-information", JSON.stringify(formDataObj));
+    alert("Your order has been submitted");
+  };
 
-        if (!this.validateInputs()) {
-            return;
-        }
+  validateInputs = () => {
+    let allFilled = true;
+    const inputs = document
+      .querySelector(".input-container")
+      .querySelectorAll("input");
+    inputs.forEach((input) => {
+      if (!input.value.trim()) {
+        input.style.borderColor = "red";
+        allFilled = false;
+      } else {
+        input.style.borderColor = "";
+      }
+    });
 
-        this.model.persist();
-        let formData = new FormData(this.view.form);
-        for (let entry of formData) {
-            localStorage.setItem(entry[0], entry[1]);
-        }
-        alert("Your order has been submitted");
-    };
+    if (!allFilled) {
+      alert("Please fill in all the fields");
+    }
 
-    validateInputs = () => {
-        let allFilled = true;
-        const inputs = document
-            .querySelector(".input-container")
-            .querySelectorAll("input");
-        inputs.forEach((input) => {
-            if (!input.value.trim()) {
-                input.style.borderColor = "red";
-                allFilled = false;
-            } else {
-                input.style.borderColor = "";
-            }
-        });
+    return allFilled;
+  };
 
-        if (!allFilled) {
-            alert("Please fill in all the fields");
-        }
-
-        return allFilled;
-    };
+  validateTermsAndConditions = () => {
+    const termsCheckbox = document.querySelector("#terms");
+    if (!termsCheckbox.checked) {
+      alert("Please accept the terms and conditions.");
+      return false;
+    } else
+    return true;
+  };
 }
