@@ -32,33 +32,34 @@ import { FormModel } from "./model/FormModel.js";
 import { FormController } from "./controller/FormController.js";
 
 class App {
-  constructor() {
-    /*
-     * Find which page is requested. The window.location.href is used to get
-     * the url. Then, we extract the page name from the url using a regular
-     * expression. The string's match() method retrieves the result of
-     * matching a string against a regular expression. Return value is an
-     * Array whose contents depend on the presence or absence of the global
-     * (g) flag, or null if no matches are found.
-     */
-    const url = window.location.href;
-    let match = url.match(/[a-z]*.html/);
-    if (!match) {
-      match = url.match(/\/$/);
-    }
-    const page = match  ? match[0] : null;
-    console.log(url);
-    console.log(page);
+    constructor() {
+        /*
+         * Find which page is requested. The window.location.href is used to get
+         * the url. Then, we extract the page name from the url using a regular
+         * expression. The string's match() method retrieves the result of
+         * matching a string against a regular expression. Return value is an
+         * Array whose contents depend on the presence or absence of the global
+         * (g) flag, or null if no matches are found.
+         */
+        const url = window.location.href;
+        let match = url.match(/[a-z]*.html/);
+        if (!match) {
+            match = url.match(/\/$/);
+        }
+        const page = match ? match[0] : null;
 
-    switch (page) {
-      case "/":
-        new CarController(new CarModel(), new CarView());
-        break;
-      case "form.html":
-        new FormController(new FormModel(), new FormView());
-        break;
+        switch (page) {
+            case "/":
+                new CarController(new CarModel(), new CarView());
+                break;
+            case "index.html":
+                new CarController(new CarModel(), new CarView());
+                break;
+            case "form.html":
+                new FormController(new FormModel(), new FormView());
+                break;
+        }
     }
-  }
 }
 
 const app = new App();
