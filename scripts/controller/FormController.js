@@ -1,3 +1,4 @@
+import FormValidator from "../util/FormValidator.js";
 /**
  * Responds to user inputs. Here, we use the FormData, a JS built-in class that
  * provides a way to easily construct a set of key/value pairs representing form
@@ -10,6 +11,7 @@ export class FormController {
     this.model = model;
     this.view = view;
     this.view.createInputs(this.model.getInputData());
+    this.validator = new FormValidator();
 
     // register one event handler for all input 'change' events
     this.view.inputs.forEach((input) => {
@@ -24,13 +26,14 @@ export class FormController {
     //update model
     let input = event.target;
     this.model[input.name] = input.value;
+    this.validator.validateForm();
   };
 
   handleFormSubmit = (event) => {
     //prevent the default action of a form (prevent submitting it)
     event.preventDefault();
 
-    if (!this.validateInputs() || !this.validateTermsAndConditions()) {
+    if (!this.validator.validateForm()) {
       return;
     }
 
@@ -41,36 +44,21 @@ export class FormController {
     }
 
     localStorage.setItem("personal-information", JSON.stringify(formDataObj));
-    alert("Your order has been submitted");
-  };
 
-  validateInputs = () => {
-    let allFilled = true;
-    const inputs = document
-      .querySelector(".input-container")
-      .querySelectorAll("input");
-    inputs.forEach((input) => {
-      if (!input.value.trim()) {
-        input.style.borderColor = "red";
-        allFilled = false;
-      } else {
-        input.style.borderColor = "";
+    // Show the order success modal
+    let modal = document.getElementById("order-success-modal");
+    modal.style.display = "block";
+
+    // When the user clicks on <span> (x), close the modal
+    document.getElementsByClassName("close-button")[0].onclick = function () {
+      modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
       }
-    });
-
-    if (!allFilled) {
-      console.log("Please fill in all the fields");
-    }
-
-    return allFilled;
-  };
-
-  validateTermsAndConditions = () => {
-    const termsCheckbox = document.querySelector("#terms");
-    if (!termsCheckbox.checked) {
-      console.log("Please accept the terms and conditions.");
-      return false;
-    } else
-    return true;
+    };
   };
 }
